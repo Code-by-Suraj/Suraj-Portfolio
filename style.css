@@ -1078,29 +1078,52 @@ h1 strong,
 }
 
 /* ========================================================
-   RESPONSIVE CSS FOR MOBILE PHONES (max-width: 768px)
+   RESPONSIVE MEDIA QUERIES FOR MOBILE & ANDROID (max-width: 768px)
    ======================================================== */
 
 @media (max-width: 768px) {
-  /* Prevent horizontal scrolling */
   html, body {
     overflow-x: hidden;
+    width: 100%;
   }
 
   .container {
-    width: 92%;
-    padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 18px;
+    box-sizing: border-box;
   }
 
-  /* 1. Mobile Menu (Using your existing #menu-toggle) */
+  .section {
+    padding: 60px 0 !important;
+  }
+
+  .section h2 {
+    font-size: 1.9rem !important;
+    text-align: center;
+  }
+
+  .section-kicker {
+    text-align: center;
+  }
+
+  .page-glow {
+    display: none;
+  }
+
+  .navbar {
+    min-height: 70px;
+    position: relative;
+  }
+
   .menu-button {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-between;
     width: 26px;
     height: 19px;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1002;
   }
 
   .menu-button span {
@@ -1109,7 +1132,11 @@ h1 strong,
     width: 100%;
     background-color: #fff;
     border-radius: 2px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .menu-toggle {
+    display: none;
   }
 
   .nav-links {
@@ -1117,133 +1144,327 @@ h1 strong,
     top: 0;
     right: -100%;
     width: 75%;
-    max-width: 280px;
+    max-width: 290px;
     height: 100vh;
-    background: #0f172a;
+    background: rgba(13, 1, 24, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 25px;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.6);
+    gap: 26px;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7);
     transition: right 0.35s ease-in-out;
-    z-index: 1000;
+    z-index: 1001;
+    border-left: 1px solid var(--line);
   }
 
-  /* Hamburger to Cross icon */
+  .nav-links a {
+    font-size: 1.15rem;
+  }
+
   .menu-toggle:checked + .menu-button span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
+
   .menu-toggle:checked + .menu-button span:nth-child(2) {
     opacity: 0;
   }
+
   .menu-toggle:checked + .menu-button span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* Slide in menu on click */
   .menu-toggle:checked ~ .nav-links {
     right: 0;
   }
 
-  /* 2. Hero Section */
+  .hero {
+    min-height: auto;
+    padding-top: 35px;
+    padding-bottom: 50px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr !important;
-    text-align: center;
     gap: 35px;
-    padding-top: 20px;
+    text-align: center;
   }
 
   .hero-copy {
     order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-visual {
     order: 1;
+    min-height: 290px !important;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+
+  .hero-copy .eyebrow {
+    justify-content: center;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.6rem !important;
+    line-height: 1.15;
+  }
+
+  .hero-copy h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-top: 12px;
   }
 
   .hero-actions {
     justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
     gap: 12px;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 140px;
+    max-width: 200px;
   }
 
   .socials {
     justify-content: center;
+    margin-top: 22px;
   }
 
-  /* Scale down profile & orbit on phone */
+  /* Profile Frame & Circles Scale */
   .profile-large {
-    width: 200px !important;
-    height: 200px !important;
+    width: 190px !important;
+    height: 190px !important;
   }
 
-  .orbit {
-    width: 270px !important;
-    height: 270px !important;
+  .orbit-a {
+    width: 245px !important;
+    height: 245px !important;
+  }
+
+  .orbit-b {
+    width: 265px !important;
+    height: 165px !important;
   }
 
   .tech-badge {
-    transform: scale(0.8);
+    padding: 6px 10px !important;
+    font-size: 0.72rem !important;
   }
 
-  /* 3. About Section */
+  .badge-html {
+    top: 6% !important;
+    left: 4% !important;
+  }
+
+  .badge-css {
+    top: 9% !important;
+    right: 4% !important;
+  }
+
+  .badge-js {
+    bottom: 6% !important;
+    left: 4% !important;
+  }
+
+  .badge-react {
+    bottom: 6% !important;
+    right: 4% !important;
+  }
+
   .about-grid {
     grid-template-columns: 1fr !important;
+    gap: 2rem !important;
     text-align: center;
-    gap: 30px;
+    margin-top: 1.5rem;
   }
 
   .about-portrait {
+    min-height: auto;
+  }
+
+  .about-portrait::before {
+    display: none;
+  }
+
+  .profile-small {
+    width: 190px !important;
+    height: 190px !important;
+    margin: 0 auto;
+  }
+
+  .about-content {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-content .eyebrow {
     justify-content: center;
+  }
+
+  .about-content h3 {
+    font-size: 1.7rem !important;
+  }
+
+  .about-content > p {
+    font-size: 0.92rem;
   }
 
   .info-grid {
     grid-template-columns: 1fr !important;
-    gap: 15px;
+    width: 100%;
+    gap: 14px !important;
   }
 
-  /* 4. Skills Section */
+  .info-card {
+    min-height: auto;
+    padding: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-title {
+    margin-bottom: 2rem !important;
+  }
+
+  .section-title p {
+    margin-top: 1rem !important;
+  }
+
+  .section-title h2 {
+    font-size: 2.1rem !important;
+  }
+
   .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
 
-  /* 5. Projects Section */
+  .skill-card {
+    padding: 1.25rem 0.8rem !important;
+    text-align: center;
+  }
+
+  .skill-icon {
+    font-size: 2.3rem !important;
+  }
+
+  .skill-card h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .skill-card p {
+    font-size: 0.82rem !important;
+    line-height: 1.5;
+  }
+
+  /* 6. Projects Section */
   .project-grid {
     grid-template-columns: 1fr !important;
-    gap: 25px;
+    gap: 20px !important;
   }
 
-  /* 6. Contact Section */
+  .project-card {
+    width: 100%;
+  }
+
+  .project-body > p:not(.project-number) {
+    min-height: auto !important;
+  }
+
   .contact-card {
     grid-template-columns: 1fr !important;
-    gap: 30px;
+    gap: 30px !important;
+    padding: 24px 16px !important;
+    margin-top: 25px !important;
+  }
+
+  .contact-copy h2 {
+    font-size: 1.8rem !important;
+    line-height: 1.15;
+  }
+
+  .contact-item {
+    margin-top: 16px !important;
+    gap: 0.75rem;
+  }
+
+  .contact-icon {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    margin-left: 0 !important;
+    flex-shrink: 0;
   }
 
   .field-grid {
-    grid-template-columns: 0.8fr !important;
-    gap: 15px;
-
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
   }
 
+  .contact-form label span {
+    margin-top: 8px !important;
+  }
+
+  .contact-form input,
   .contact-form textarea {
-    width: 80%;
+    width: 100% !important;
+    box-sizing: border-box;
   }
 
+  .contact-form .btn,
+  .submit {
+    width: 100% !important;
+    max-width: 100%;
+    margin-top: 12px;
+  }
 
-.contact-icon {
-    width: 2rem;
-    height: 2rem;
-    margin-left: -40px;
-}
-  /* 7. Footer */
+  .footer {
+    padding: 24px 0;
+  }
+
   .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+
+  .footer-inner p,
+  .footer-inner .back-top,
+  .footer p {
+    margin-right: 0 !important;
+    text-align: center !important;
+  }
+}
+
+/* Extra Small Screens (360px width phones) */
+@media (max-width: 400px) {
+  .hero-copy h1 {
+    font-size: 2.1rem !important;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr !important;
   }
 }
